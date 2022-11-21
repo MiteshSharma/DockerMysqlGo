@@ -63,6 +63,9 @@ func (d *Docker) Start(c ContainerOption) (string, error) {
 		d.Stop()
 		return "", err
 	}
+
+	time.Sleep(time.Second * ContainerStartTimeout)
+
 	return string(result), nil
 }
 
