@@ -21,5 +21,5 @@ func (m *Container) StartRedisDocker(port int, pass string) {
 
 	m.Docker = Docker{}
 	m.Docker.Start(containerOption)
-	m.Docker.WaitForStartOrKill(ContainerStartTimeout)
+	m.Docker.WaitForStartOrKill(int(m.Docker.ContainerStartTimeout))
 }
