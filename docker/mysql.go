@@ -28,7 +28,6 @@ func (m *Container) StartMysqlDocker(user, password string, port int, dbname str
 		MappedPorts: []MappedPort{mappedPorts},
 	}
 
-	m.Docker = Docker{}
 	m.Docker.Start(containerOption)
-	m.Docker.WaitForStartOrKill(ContainerStartTimeout)
+	m.Docker.WaitForStartOrKill(int(m.Docker.ContainerStartTimeout))
 }

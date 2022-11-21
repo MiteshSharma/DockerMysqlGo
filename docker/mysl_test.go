@@ -22,6 +22,7 @@ func TestMySQLContainer(t *testing.T) {
 	docker := Docker{
 		ContainerID:   "mysql-unittest",
 		ContainerName: "mysql-unitest",
+		ContainerStartTimeout: 15,
 	}
 
 	mysqlContainer := Container{

@@ -1,7 +1,5 @@
 package docker
 
-var ContainerStartTimeout = 10
-
 type Container struct {
 	ImageName   string
 	Docker      Docker

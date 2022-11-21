@@ -18,6 +18,7 @@ const (
 type Docker struct {
 	ContainerID   string
 	ContainerName string
+	ContainerStartTimeout int64
 }
 
 type MappedPort struct {
@@ -64,7 +65,7 @@ func (d *Docker) Start(c ContainerOption) (string, error) {
 		return "", err
 	}
 
-	time.Sleep(time.Second * ContainerStartTimeout)
+	time.Sleep(time.Second * time.Duration(d.ContainerStartTimeout))
 
 	return string(result), nil
 }
