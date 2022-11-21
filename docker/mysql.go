@@ -1,5 +1,10 @@
 package docker
 
+import (
+	"fmt"
+	"time"
+)
+
 func (m *Container) StartMysqlDocker(user, password string, port int, dbname string) {
 
 	mysqlOptions := map[string]string{
@@ -16,7 +21,7 @@ func (m *Container) StartMysqlDocker(user, password string, port int, dbname str
 	}
 
 	containerOption := ContainerOption{
-		Name:              "project-mysql-1",
+		Name:              fmt.Sprintf("unit-test-mysql-%d",time.Now().Unix()),
 		Options:           mysqlOptions,
 		MountVolumePath:   "/var/lib/mysql",
 		ContainerFileName: m.ImageName,
