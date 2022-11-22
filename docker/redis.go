@@ -1,5 +1,10 @@
 package docker
 
+import (
+	"fmt"
+	"time"
+)
+
 func (m *Container) StartRedisDocker(port int, pass string) {
 
 	envVar := map[string]string{
@@ -12,7 +17,7 @@ func (m *Container) StartRedisDocker(port int, pass string) {
 	}
 
 	containerOption := ContainerOption{
-		Name:              "project-redis-1",
+		Name:              fmt.Sprintf("test-redis-%d",time.Now().Unix()),
 		Options:           envVar,
 		MountVolumePath:   "/var/lib/redis",
 		ContainerFileName: m.ImageName,
